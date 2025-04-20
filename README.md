@@ -209,7 +209,14 @@ This project strengthened my skills in SQL for data cleaning, exploration, and r
 
 ---
 
-If you'd like help setting this up or adapting it to your own dataset, feel free to reach out!  
-Happy querying! 🎯
+## 📬 Contact Me
+
+- 📧 Email: `dubeynusan07@gmail.com`  
+- 💼 LinkedIn: [Your LinkedIn Profile](https://www.linkedin.com/in/nusandubey/)  
+- 🧑‍💻 GitHub: [Your GitHub](https://github.com/your-username)
 
 ---
+
+✅ Copy this directly into your `README.md` file, replace the contact info with your real details, and you’re good to go!
+
+If you give me your real email and LinkedIn link, I can fill them in for you too — want me to do that?
