@@ -1,21 +1,23 @@
-🧾 Retail Sales Data Analysis — SQL Project
+# 🧾 Sales Data Analysis — SQL Project
 
-Welcome to my Sales Data Analysis project!
+Welcome to my Sales Data Analysis project!  
 This project demonstrates how to create, clean, explore, and analyze a sales dataset using SQL.
 
-📂 Project Overview
-In this project, I designed and worked with a structured sales table that simulates transaction data for a retail business. The focus is on using SQL for:
+---
 
-Data Cleaning 🧹
+## 📂 Project Overview
 
-Data Exploration 🔍
+In this project, I designed and worked with a structured `sales` table that simulates transaction data for a retail business. The focus is on using SQL for:
 
-Business Problem Solving 💡
+- Data Cleaning 🧹  
+- Data Exploration 🔍  
+- Business Problem Solving 💡  
 
-💾 Table Schema
-sql
-Copy
-Edit
+---
+
+## 💾 Table Schema
+
+```sql
 CREATE TABLE sales (
     transactions_id INT NOT NULL,	
     sale_date DATE,	
@@ -30,6 +32,9 @@ CREATE TABLE sales (
     total_sale FLOAT,
     PRIMARY KEY (transactions_id)
 );
+
+
+
 ⚙️ Data Cleaning Steps
 Null Value Detection
 Checked for NULL values in all key columns.
@@ -60,8 +65,6 @@ Copy
 Edit
 SELECT DISTINCT(category) FROM sales;
 💡 Business Problem Solving
-Here are some key business questions answered with SQL:
-
 Retrieve Sales from November 2022
 
 sql
@@ -70,7 +73,7 @@ Edit
 CREATE VIEW Nov_2022_sales AS (
     SELECT * FROM sales
     WHERE EXTRACT(YEAR FROM sale_date) = 2022 
-      AND EXTRACT(MONTH FROM sale_date) = 11
+    AND EXTRACT(MONTH FROM sale_date) = 11
 );
 High-Value Clothing Sales in Nov-2022
 
@@ -84,7 +87,7 @@ Total Sales and Transactions per Category
 sql
 Copy
 Edit
-SELECT category, SUM(total_sale) AS total_sales, COUNT(*) As total_orders
+SELECT category, SUM(total_sale) AS total_sales, COUNT(*) AS total_orders
 FROM sales
 GROUP BY category;
 Average Age of Beauty Product Buyers
@@ -176,4 +179,3 @@ Modify queries to suit your business needs or datasets!
 
 If you'd like help setting this up or adapting it to your own dataset, feel free to reach out!
 Happy querying! 🎯
-
