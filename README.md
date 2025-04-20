@@ -212,11 +212,7 @@ This project strengthened my skills in SQL for data cleaning, exploration, and r
 ## 📬 Contact Me
 
 - 📧 Email: `dubeynusan07@gmail.com`  
-- 💼 LinkedIn: [Your LinkedIn Profile](https://www.linkedin.com/in/nusandubey/)  
-- 🧑‍💻 GitHub: [Your GitHub](https://github.com/your-username)
+- 💼 LinkedIn: [My LinkedIn Profile](https://www.linkedin.com/in/nusandubey/)  
+- 🧑‍💻 GitHub: [My GitHub]([https://github.com/your-username](https://github.com/NUS1996))
 
 ---
-
-✅ Copy this directly into your `README.md` file, replace the contact info with your real details, and you’re good to go!
-
-If you give me your real email and LinkedIn link, I can fill them in for you too — want me to do that?
