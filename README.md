@@ -1,4 +1,4 @@
-# 🧾 Sales Data Analysis — SQL Project
+# 🧾 Retail Sales Data Analysis — SQL Project
 
 Welcome to my Sales Data Analysis project!  
 This project demonstrates how to create, clean, explore, and analyze a sales dataset using SQL.
@@ -32,86 +32,110 @@ CREATE TABLE sales (
     total_sale FLOAT,
     PRIMARY KEY (transactions_id)
 );
+```
 
+---
 
+## ⚙️ Data Cleaning Steps
 
-⚙️ Data Cleaning Steps
-Null Value Detection
-Checked for NULL values in all key columns.
+1. **Null Value Detection**  
 
-Handling Missing Age
-Updated NULL values in the age column by replacing them with the average age.
+```sql
+SELECT * 
+FROM sales 
+WHERE (transactions_id IS NULL OR sale_date IS NULL OR sale_time IS NULL 
+OR customer_id IS NULL OR gender IS NULL OR age IS NULL
+OR category IS NULL OR quantity IS NULL OR price_per_unit IS NULL 
+OR cogs IS NULL OR total_sale IS NULL);
+```
 
-Deleting Incomplete Sales
-Deleted records with NULL quantity, as these are incomplete transactions.
+2. **Handling Missing Age Values**  
 
-🔍 Data Exploration Highlights
-Total Number of Sales
+```sql
+UPDATE sales 
+SET age = sub.avg_age FROM 
+(SELECT ROUND(AVG(age),2) AS avg_age FROM sales WHERE age IS NOT NULL) AS sub
+WHERE age IS NULL;
+```
 
-sql
-Copy
-Edit
+3. **Deleting Incomplete Sales**  
+
+```sql
+DELETE FROM sales 
+WHERE quantity IS NULL;
+```
+
+---
+
+## 🔍 Data Exploration Highlights
+
+- **Total Number of Sales**
+
+```sql
 SELECT COUNT(total_sale) FROM sales;
-Unique Customers
+```
 
-sql
-Copy
-Edit
+- **Unique Customers**
+
+```sql
 SELECT COUNT(DISTINCT(customer_id)) FROM sales;
-Distinct Product Categories
+```
 
-sql
-Copy
-Edit
+- **Distinct Product Categories**
+
+```sql
 SELECT DISTINCT(category) FROM sales;
-💡 Business Problem Solving
-Retrieve Sales from November 2022
+```
 
-sql
-Copy
-Edit
+---
+
+## 💡 Business Problem Solving
+
+1. **Retrieve Sales from November 2022**
+
+```sql
 CREATE VIEW Nov_2022_sales AS (
     SELECT * FROM sales
     WHERE EXTRACT(YEAR FROM sale_date) = 2022 
     AND EXTRACT(MONTH FROM sale_date) = 11
 );
-High-Value Clothing Sales in Nov-2022
+```
 
-sql
-Copy
-Edit
+2. **High-Value Clothing Sales in Nov-2022**
+
+```sql
 SELECT * FROM Nov_2022_sales 
 WHERE category = 'Clothing' AND total_sale > 1000;
-Total Sales and Transactions per Category
+```
 
-sql
-Copy
-Edit
+3. **Total Sales and Transactions per Category**
+
+```sql
 SELECT category, SUM(total_sale) AS total_sales, COUNT(*) AS total_orders
 FROM sales
 GROUP BY category;
-Average Age of Beauty Product Buyers
+```
 
-sql
-Copy
-Edit
+4. **Average Age of Beauty Product Buyers**
+
+```sql
 SELECT ROUND(AVG(age),0) AS average_age
 FROM sales 
 WHERE category = 'Beauty';
-Sales Breakdown by Gender and Category
+```
 
-sql
-Copy
-Edit
+5. **Sales Breakdown by Gender and Category**
+
+```sql
 SELECT gender, category, COUNT(transactions_id), SUM(total_sale)
 FROM sales 
 GROUP BY gender, category
 ORDER BY SUM(total_sale) DESC;
-Best Selling Month Per Year
+```
 
-sql
-Copy
-Edit
+6. **Best Selling Month Per Year**
+
+```sql
 SELECT * FROM (
     SELECT EXTRACT(YEAR FROM sale_date) AS Year,
            EXTRACT(MONTH FROM sale_date) AS Month,  
@@ -121,30 +145,30 @@ SELECT * FROM (
     GROUP BY 1,2
 ) AS sub 
 WHERE ranking = 1;
-Top 5 Customers by Sales
+```
 
-sql
-Copy
-Edit
+7. **Top 5 Customers by Sales**
+
+```sql
 SELECT customer_id, SUM(total_sale) AS total_sales
 FROM sales 
 GROUP BY customer_id
 ORDER BY total_sales DESC
 LIMIT 5;
-Unique Customers per Category
+```
 
-sql
-Copy
-Edit
+8. **Unique Customers per Category**
+
+```sql
 SELECT category, COUNT(DISTINCT(customer_id))
 FROM sales 
 GROUP BY category
 ORDER BY 2 DESC;
-Order Distribution by Time of Day
+```
 
-sql
-Copy
-Edit
+9. **Order Distribution by Time of Day**
+
+```sql
 WITH shift_timing AS (
     SELECT *,
            CASE 
@@ -158,24 +182,34 @@ SELECT Time_of_day, COUNT(transactions_id) AS total_orders
 FROM shift_timing 
 GROUP BY Time_of_day
 ORDER BY total_orders DESC;
-📊 Key Learnings
-Data cleaning techniques using UPDATE and DELETE.
+```
 
-Creating reusable VIEWS for filtered data.
+---
 
-Advanced aggregations using GROUP BY and RANK().
+## 📊 Key Learnings
 
-Business-focused queries for actionable insights.
+- Data cleaning techniques using `UPDATE` and `DELETE`.
+- Creating reusable `VIEWS` for filtered data.
+- Advanced aggregations using `GROUP BY` and `RANK()`.
+- Business-focused queries for actionable insights.
 
-🚀 Conclusion
+---
+
+## 🚀 Conclusion
+
 This project strengthened my skills in SQL for data cleaning, exploration, and real-world problem-solving. The queries simulate typical questions a business would ask to drive decision-making.
 
-💡 How to Use
-Clone this repository.
+---
 
-Run the provided SQL scripts in any SQL-compatible environment (PostgreSQL, MySQL, or SQLite with minor tweaks).
+## 💡 How to Use
 
-Modify queries to suit your business needs or datasets!
+1. Clone this repository.
+2. Run the provided SQL scripts in any SQL-compatible environment (PostgreSQL, MySQL, or SQLite with minor tweaks).
+3. Modify queries to suit your business needs or datasets!
 
-If you'd like help setting this up or adapting it to your own dataset, feel free to reach out!
+---
+
+If you'd like help setting this up or adapting it to your own dataset, feel free to reach out!  
 Happy querying! 🎯
+
+---
