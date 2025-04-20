@@ -213,6 +213,6 @@ This project strengthened my skills in SQL for data cleaning, exploration, and r
 
 - 📧 Email: `dubeynusan07@gmail.com`  
 - 💼 LinkedIn: [My LinkedIn Profile](https://www.linkedin.com/in/nusandubey/)  
-- 🧑‍💻 GitHub: [My GitHub]([https://github.com/your-username](https://github.com/NUS1996))
+- 🧑‍💻 GitHub: [My GitHub](https://github.com/NUS1996)
 
 ---
